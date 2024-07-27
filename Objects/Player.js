@@ -35,16 +35,16 @@ export class Player extends GameObject {
 
         // Graphic settings
         this.draw = new Draw(screen);
+        this.sprite = new Sprite(screen);
         this.spriteSheetFileName = "../Assets/sprite_sheet_0.png";  // Sprite Animations
         this.spriteFaceFileName = "../Assets/sprite_faces_0.png";   // Sprite Portrait
         this.spritePositions = SPRITE_POSITIONS.DOWN; // Sprite row animation
-        this.sprite = new Sprite(screen, this.spriteSheetFileName);
-        this.sprite.frameCount = 3;
+        this.sprite.frameCount = 3; // How much frames the animation has
 
         // Player Status
         this.Health = 470;
         this.MaxHealth = this.Health;
-        this.Mana = 170;
+        this.Mana = 190;
         this.MaxMana = this.Mana;
         this.Stamine = 100;
         this.MaxStamine = this.Stamine;
@@ -79,7 +79,7 @@ export class Player extends GameObject {
         this.draw.DrawText(`x: ${_xx.toFixed(0)}, y: ${_yy.toFixed(0)}`, 16, 620);
 
         // Draw player face
-        this.sprite.Cliping(
+        this.sprite.Clipping(
             this.spriteFaceFileName,
             new Vector2D(0, 0),
             new Vector2D(72, 72),
