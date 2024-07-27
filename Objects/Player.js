@@ -154,10 +154,5 @@ export class Player extends GameObject {
             this.position.y += this.speed * deltaTime;
             this.isMoving = true;
         }
-
-        // Test System Health
-        if (Input.GetKeyDown(KeyCode.E)) {
-            this.Health -= 10;
-        }
     }
 }
