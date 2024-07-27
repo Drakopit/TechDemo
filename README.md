@@ -83,7 +83,7 @@ TechDemo/
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/your-repo/TechDemo.git
+   git clone https://github.com/Drakopit/TechDemo.git
    ```
 
 2. **Navigate to the project directory:**
