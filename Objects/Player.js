@@ -15,7 +15,7 @@ const SPRITE_POSITIONS = Object.freeze({
 
 /**
  * @doc Class Player
- * @namespace Entities
+ * @namespace Objects
  * @class Player
  * @summary This class represents a player entity with basic physics and input handling.
  * @Date 26/07/2024
@@ -23,6 +23,7 @@ const SPRITE_POSITIONS = Object.freeze({
  *  const player = new Player(50, 50);
  * @returns {void}
  */
+
 export class Player extends GameObject {
     constructor(screen, x, y) {
         super();
@@ -36,23 +37,19 @@ export class Player extends GameObject {
         // Graphic settings
         this.draw = new Draw(screen);
         this.sprite = new Sprite(screen);
-        this.spriteSheetFileName = "../Assets/sprite_sheet_0.png";  // Sprite Animations
-        this.spriteFaceFileName = "../Assets/sprite_faces_0.png";   // Sprite Portrait
+        this.sprite_sheet_file_name = "../Assets/sprite_sheet_0.png";  // Sprite Animations
+        this.sprite_picture_file_name = "../Assets/sprite_faces_0.png";   // Sprite Portrait
         this.spritePositions = SPRITE_POSITIONS.DOWN; // Sprite row animation
         this.sprite.frameCount = 3; // How much frames the animation has
 
         // Player Status
-        this.Health = 470;
-        this.MaxHealth = this.Health;
-        this.Mana = 190;
-        this.MaxMana = this.Mana;
-        this.Stamine = 100;
-        this.MaxStamine = this.Stamine;
-
+        this.Health = 470;  this.MaxHealth = this.Health;
+        this.Mana = 190;    this.MaxMana = this.Mana;
+        this.Stamine = 100; this.MaxStamine = this.Stamine;
     }
 
     OnStart() {
-        console.log("Player started at position:", this.position);
+        console.dir(this);
     }
 
     OnUpdate() {
@@ -70,7 +67,7 @@ export class Player extends GameObject {
 
     OnDrawn() {
         this.sprite.size = this.size;
-        this.sprite.Animation(this.spriteSheetFileName, this.position, "horizontal", this.spritePositions);
+        this.sprite.Animation(this.sprite_sheet_file_name, this.position, "horizontal", this.spritePositions);
     }
 
     OnGUI() {
@@ -79,52 +76,47 @@ export class Player extends GameObject {
         this.draw.DrawText(`x: ${_xx.toFixed(0)}, y: ${_yy.toFixed(0)}`, 16, 620);
 
         // Draw player face
-        this.sprite.Clipping(
-            this.spriteFaceFileName,
-            new Vector2D(0, 0),
-            new Vector2D(72, 72),
-            new Vector2D(288, 0),
-            new Vector2D(144, 144));
+        let setPicture = {
+            pos: new Vector2D(0, 0),
+            size: new Vector2D(72, 72),
+            cut_pos: new Vector2D(288, 0),
+            cut_size: new Vector2D(144, 144)
+        }
+        this.sprite.Clipping(this.sprite_picture_file_name, setPicture.pos, setPicture.size, setPicture.cut_pos, setPicture.cut_size);
 
         //#region Draw HP, MP and Stamina bar 
-        let hpbar = {
-            _x: 76,
-            _y: 16,
-            _size: 100
-        } 
-        // Background Bar
-        this.draw.Color = "grey";
-        this.draw.DrawRect(hpbar._x, hpbar._y, hpbar._size, 16);
-        // Foreground Bar
-        this.draw.Color = "green";
-        this.draw.DrawRect(hpbar._x, hpbar._y, (this.Health/this.MaxHealth)*hpbar._size, 16);
-        // Text Bar
-        this.draw.Color = "white";
-        this.draw.DrawText(`Hp: ${this.Health}/${this.MaxHealth}`, hpbar._x, hpbar._y + 12);
+        // HP Bar
+        this.DrawBar(new Vector2D(76, 16),
+            new Vector2D(100, 16),
+            this.Health,
+            this.MaxHealth,
+            new Vector2D(12, 12), {
+            background: "grey",
+            foreground: "green",
+            text: "white"
+        });
 
-        let mpbar = {
-            _x: 76,
-            _y: 36,
-            _size: 100
-        }
-        // Background Bar
-        this.draw.Color = "grey";
-        this.draw.DrawRect(mpbar._x, mpbar._y, mpbar._size, 16);
-        // Foreground Bar
-        this.draw.Color = "blue";
-        this.draw.DrawRect(mpbar._x, mpbar._y, (this.Mana/this.MaxMana)*mpbar._size, 16);
+        // MP Bar
+        this.DrawBar(new Vector2D(76, 36),
+            new Vector2D(100, 16),
+            this.Mana,
+            this.MaxMana,
+            new Vector2D(12, 12), {
+            background: "grey",
+            foreground: "blue",
+            text: "white"
+        });
 
-        let stbar = {
-            _x: 76,
-            _y: 56,
-            _size: 100
-        }
-        // Background Bar
-        this.draw.Color = "grey";
-        this.draw.DrawRect(stbar._x, stbar._y, stbar._size, 16);
-        // Foreground Bar
-        this.draw.Color = "gold";
-        this.draw.DrawRect(stbar._x, stbar._y, (this.Stamine/this.MaxStamine)*stbar._size, 16);
+        // Stamina Bar
+        this.DrawBar(new Vector2D(76, 56),
+            new Vector2D(100, 16),
+            this.Stamine,
+            this.MaxStamine,
+            new Vector2D(12, 12), {
+            background: "grey",
+            foreground: "#dc9c07",
+            text: "white"
+        });
         //#endregion
 
         // Default Settings
@@ -154,5 +146,17 @@ export class Player extends GameObject {
             this.position.y += this.speed * deltaTime;
             this.isMoving = true;
         }
+    }
+
+    DrawBar(position, size, value, max_value, text_position, colors) {
+        // Background Bar
+        this.draw.Color = colors.background;
+        this.draw.DrawRect(position.GetValue().x, position.GetValue().y, size.GetValue().x, size.GetValue().y);
+        // Foreground Bar
+        this.draw.Color = colors.foreground;
+        this.draw.DrawRect(position.GetValue().x, position.GetValue().y, (value / max_value) * size.GetValue().x, size.GetValue().y);
+        // Text Bar
+        this.draw.Color = colors.text;
+        this.draw.DrawText(`${value}/${max_value}`, position.GetValue().x + text_position.GetValue().x, position.GetValue().y + text_position.GetValue().y);
     }
 }

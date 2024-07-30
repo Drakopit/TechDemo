@@ -12,7 +12,7 @@ import { GravityLevel } from "./Levels/GravityLevel.js";
 try {
     // Add levels before starting the engine
     LevelHandler.addLevel(new GravityLevel("GravityLevel"));
-    // Add more levels as needed
+    // Add more levels as needed...
 
     Engine.OnStart();
     console.dir(Engine);
