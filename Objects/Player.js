@@ -42,14 +42,18 @@ export class Player extends GameObject {
         this.spritePositions = SPRITE_POSITIONS.DOWN; // Sprite row animation
         this.sprite.frameCount = 3; // How much frames the animation has
 
-        // Player Status
+        // Status
         this.Health = 470;  this.MaxHealth = this.Health;
         this.Mana = 190;    this.MaxMana = this.Mana;
         this.Stamine = 100; this.MaxStamine = this.Stamine;
+
+        // Status Acting
+        this.Attack = 10;
+        this.Defense = 7;
     }
 
     OnStart() {
-        console.dir(this);
+        // console.dir(this);
     }
 
     OnUpdate() {
@@ -59,6 +63,11 @@ export class Player extends GameObject {
         } else {
             this.sprite.Reset();
         }
+
+        // Don't let life minor than 0
+        if (this.Health < 0) this.Health = 0;
+        if (this.Mana < 0) this.Mana = 0;
+        if (this.Stamine < 0) this.Stamine = 0;
     }
 
     OnFixedUpdate(deltaTime) {

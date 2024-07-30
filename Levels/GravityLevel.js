@@ -16,6 +16,7 @@ import { Camera } from "../Framework/Root/Camera.js";
 import { Player } from "../Objects/Player.js";
 import { Vector2D } from "../Framework/Math/Vector2D.js";
 import { Scene } from "../Framework/Root/Scene.js";
+import { Enemy_0 } from "../Objects/Enemy.js";
 
 export class GravityLevel extends Level {
     constructor() {
@@ -24,6 +25,7 @@ export class GravityLevel extends Level {
         this.gravity = 9.8; // gravity value
         this.screen = new Screen("GravityLevel", 640, 480);
         this.draw = new Draw(this.screen);
+        this.LEVEL_HANDLER = this;
     }
 
     async OnStart() {
@@ -33,6 +35,11 @@ export class GravityLevel extends Level {
         const player = new Player(this.screen, 50, 100);
         player.CurrentLevel = this.LEVEL_HANDLER;
         this.AddEntity(player);
+
+        // Create and add a enemy entity to the level
+        const enemy = new Enemy_0(this.screen, 300, 300);
+        enemy.CurrentLevel = this.LEVEL_HANDLER;
+        this.AddEntity(enemy);
 
         // Create the camera
         let game_world = {
