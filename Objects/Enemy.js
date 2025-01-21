@@ -14,7 +14,7 @@ const SPRITE_POSITIONS = Object.freeze({
     UP: 3
 });
 
-export class Enemy_0 extends GameObject {
+export class Enemy extends GameObject {
     constructor(screen, x, y) {
         super();
         this.position = new Vector2D(x, y);
@@ -47,7 +47,6 @@ export class Enemy_0 extends GameObject {
     }
 
     OnStart() {
-        // console.dir(this);
         this.move_actions = ["Stay", "Left", "Right", "Up", "Down"];
     }
 

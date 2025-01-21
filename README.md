@@ -26,7 +26,7 @@ Here's an overview of the project's directory structure:
 
 ```
 TechDemo/
-├── Framework/
+├── GameForjeJS/
 │   ├── Audio/
 │   |   ├── Song.js/
 │   ├── Graphic/
@@ -66,10 +66,21 @@ TechDemo/
 │   │   ├── Screen.js
 │   │   ├── Screen3D.js
 ├── Assets/
-│   ├── CharSpriteSheet.png
+│   ├── Map
+│   │   ├── base_Map.json
+│   │   ├── BaseTile.tsx
+│   │   ├── Outside_A2.png
+│   ├── sprite_sheet_0.png
+│   ├── sprite_faces_0.png
+│   ├── oga_preview.png
+│   ├── kirito_sprite_sheet_sao.webp
 ├── Levels/
 │   ├── GravityLevel.js
+│   ├── MainMenu.js
 ├── Objects/
+│   ├── Attacks
+│   │   ├── SlashSword.js
+│   ├── Enemy.js
 │   ├── Player.js
 ├── main.html
 ├── main.css
@@ -95,6 +106,8 @@ TechDemo/
 3. **Open `main.html` in your preferred web browser:**
 
    Simply open the `main.html` file in your browser to run the demo.
+
+   Obs: You'll need run it in a server. Cause CORS policy.
 
 ## Usage
 
@@ -149,7 +162,7 @@ export class CustomLevel extends Level {
 
 ### Running the Game
 
-To run the game, initialize the `Engine` in your `main.js`:
+To run the game, initialize the `Engine` in your `main.js`, and put a level to start:
 
 ```javascript
 import { Engine, LevelHandler } from "./Framework/Root/Engine.js";
@@ -179,6 +192,12 @@ try {
 
 Explore the `Levels/` directory to see examples of different game levels and how to create them. The `GravityLevel.js` demonstrates a level with gravity effects applied to game entities.
 
+## Pictures
+
+![Main Menu](Images\Main_menu.png)
+
+![Sample](Images\Sample.png)
+
 ## Contributing
 
 We welcome contributions! If you have suggestions, bug fixes, or improvements, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
@@ -189,7 +208,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or feedback, feel free to contact the author, Patrick Faustino Camello, at [patrickcamelo@yahoo.com.br].
+For any questions or feedback, feel free to contact the author, Patrick Faustino Camello, at [patrickcamelo@yahoo.com.br](mailto:patrickcamelo@yahoo.com.br).
 
 ---
 

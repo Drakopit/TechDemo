@@ -1,5 +1,6 @@
 import { Engine, LevelHandler } from "./Framework/Root/Engine.js";
 import { GravityLevel } from "./Levels/GravityLevel.js";
+import { MainMenu } from "./Levels/MainMenu.js";
 
 /**
  * @author Patrick Faustino Camello
@@ -11,7 +12,8 @@ import { GravityLevel } from "./Levels/GravityLevel.js";
 
 try {
     // Add levels before starting the engine
-    LevelHandler.addLevel(new GravityLevel("GravityLevel"));
+    LevelHandler.addLevel(new MainMenu());
+    LevelHandler.addLevel(new GravityLevel());
     // Add more levels as needed...
 
     Engine.OnStart();
