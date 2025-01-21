@@ -9,13 +9,13 @@
  * @returns {void}
  */
 
-import { Screen } from "../Framework/Window/Screen.js";
-import { Draw } from "../Framework/Graphic/Draw.js";
-import { Level } from "../Framework/Template/Level.js";
-import { Camera } from "../Framework/Root/Camera.js";
+import { Screen } from "../GameForgeJS/Window/Screen.js";
+import { Draw } from "../GameForgeJS/Graphic/Draw.js";
+import { Level } from "../GameForgeJS/Template/Level.js";
+import { Camera } from "../GameForgeJS/Root/Camera.js";
 import { Player } from "../Objects/Player.js";
-import { Vector2D } from "../Framework/Math/Vector2D.js";
-import { Scene } from "../Framework/Root/Scene.js";
+import { Vector2D } from "../GameForgeJS/Math/Vector2D.js";
+import { Scene } from "../GameForgeJS/Root/Scene.js";
 import { Enemy } from "../Objects/Enemy.js";
 
 export class GravityLevel extends Level {

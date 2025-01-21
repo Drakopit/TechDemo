@@ -1,10 +1,10 @@
-import { GameObject } from "../Framework/Root/GameObject.js";
-import { Vector2D } from "../Framework/Math/Vector2D.js";
-import { Draw } from "../Framework/Graphic/Draw.js";
-import { Sprite } from "../Framework/Graphic/Sprite.js";
-import { Util } from "../Framework/Root/Utils.js";
-import { MathExt } from "../Framework/Math/MathExt.js";
-import { LevelHandler } from "../Framework/Root/Engine.js";
+import { GameObject } from "../GameForgeJS/Root/GameObject.js";
+import { Vector2D } from "../GameForgeJS/Math/Vector2D.js";
+import { Draw } from "../GameForgeJS/Graphic/Draw.js";
+import { Sprite } from "../GameForgeJS/Graphic/Sprite.js";
+import { Util } from "../GameForgeJS/Root/Utils.js";
+import { MathExt } from "../GameForgeJS/Math/MathExt.js";
+import { LevelHandler } from "../GameForgeJS/Root/Engine.js";
 
 // Sprite positions enum
 const SPRITE_POSITIONS = Object.freeze({

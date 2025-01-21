@@ -26,7 +26,7 @@ Here's an overview of the project's directory structure:
 
 ```
 TechDemo/
-├── GameForjeJS/
+├── GameForgeJS/
 │   ├── Audio/
 │   |   ├── Song.js/
 │   ├── Graphic/
@@ -127,7 +127,7 @@ To create a new level, extend the `Level` class and override the necessary metho
 Example:
 
 ```javascript
-import { Level } from "./Framework/Template/Level.js";
+import { Level } from "./GameForgeJS/Template/Level.js";
 import { Player } from "./Objects/Player.js";
 
 export class CustomLevel extends Level {
@@ -165,7 +165,7 @@ export class CustomLevel extends Level {
 To run the game, initialize the `Engine` in your `main.js`, and put a level to start:
 
 ```javascript
-import { Engine, LevelHandler } from "./Framework/Root/Engine.js";
+import { Engine, LevelHandler } from "./GameForgeJS/Root/Engine.js";
 import { CustomLevel } from "./Levels/CustomLevel.js";
 
 try {
@@ -194,9 +194,9 @@ Explore the `Levels/` directory to see examples of different game levels and how
 
 ## Pictures
 
-![Main Menu](Images\Main_menu.png)
+![Main Menu](Images/Main_menu.png)
 
-![Sample](Images\Sample.png)
+![Sample](Images/Sample.png)
 
 ## Contributing
 

@@ -1,4 +1,4 @@
-import { Engine, LevelHandler } from "./Framework/Root/Engine.js";
+import { Engine, LevelHandler } from "./GameForgeJS/Root/Engine.js";
 import { GravityLevel } from "./Levels/GravityLevel.js";
 import { MainMenu } from "./Levels/MainMenu.js";
 

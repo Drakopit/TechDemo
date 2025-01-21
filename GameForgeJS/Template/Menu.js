@@ -1,28 +1,22 @@
-import { Draw } from "../GameForgeJS/Graphic/Draw.js";
-import { Level } from "../GameForgeJS/Template/Level.js";
-import { Screen } from "../GameForgeJS/Window/Screen.js";
-import { Input } from "../GameForgeJS/Input/Input.js";
-import { KeyCode } from "../GameForgeJS/Input/KeyCode.js";
+import { Base } from '../Root/Base.js';
+import { Draw } from '../Graphic/Draw.js';
+import { Input } from '../Input/Input.';
 
-export class MainMenu extends Level {
-    constructor() {
+export class Menu extends Base {
+    constructor(screen) {
         super();
-        this.caption = "Main Menu Level";
-        this.LEVEL_HANDLER = this;
-    }
-
-    OnStart() {
-        this.TelaId = "MainMenu";
-        this.screen = new Screen(this.TelaId, 640, 480);
+        this.screen = screen;
         this.draw = new Draw(this.screen);
 
         this.options = new Array("Novo Jogo", "Continuar", "Opções", "Sair");
 
         // Item selecionado do menu
         this.currentSelected = 0;
+    }
 
-
+    OnStart() {
         this.draw.FontSize = "45px";
+        console.log(this.options);
     }
 
     OnUpdate() {
@@ -37,10 +31,6 @@ export class MainMenu extends Level {
                 this.currentSelected = 0;
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.E) && this.currentSelected == 0) {
-            this.Next = true;
-        }
     }
 
     OnGUI() {
@@ -52,6 +42,5 @@ export class MainMenu extends Level {
             }
             this.draw.DrawText(this.options[i], 32, 64 + i * 64);
         }
-        super.OnGUI();
     }
 }
