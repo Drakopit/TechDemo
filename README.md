@@ -194,9 +194,9 @@ Explore the `Levels/` directory to see examples of different game levels and how
 
 ## Pictures
 
-![Main Menu](Images\Main_menu.png)
+![Main Menu](Images/Main_menu.png)
 
-![Sample](Images\Sample.png)
+![Sample](Images/Sample.png)
 
 ## Contributing
 
